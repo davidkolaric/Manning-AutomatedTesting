@@ -24,19 +24,18 @@ namespace ShoppingCartService.Tests.BusinessLogic
             _mapper = config.CreateMapper();
         }
 
-        [Theory]
-        [InlineData()]
-        public void CalculateTotalsShouldReturnCorrectTotal()
+        [Fact]
+        public void CalculateTotals_WhenStandardCustomer_TotalsEqualsCostPlusShipping()
         {
             var checkOutEngine = new CheckOutEngine(_shippingCalculator, _mapper);
             var cart = new Cart {
                 ShippingAddress = new Address(),
             };
+            cart.Items.Add(new Item { Price = 10, Quantity = 3 });
 
-            var actual = checkOutEngine.CalculateTotals(cart);
-            var expected = new CheckoutDto(new ShoppingCartDto { ShippingAddress = cart.ShippingAddress, Items = Enumerable.Empty<ItemDto>() }, 0, 0, 0);
+            var actual = checkOutEngine.CalculateTotals(cart).Total;
 
-            Assert.Equal(expected, actual);
+            Assert.Equal(75, actual);
         }
     }
 }

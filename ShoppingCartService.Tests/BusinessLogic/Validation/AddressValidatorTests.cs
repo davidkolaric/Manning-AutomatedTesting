@@ -14,7 +14,7 @@ namespace ShoppingCartService.Tests.BusinessLogic.Validation
         }
 
         [Fact]
-        public void IsValid_ShouldReturnTrueIfAllFieldsAreFilled()
+        public void IsValid_ValidValues_ReturnsTrue()
         {
             var address = new Address
             {
@@ -29,7 +29,7 @@ namespace ShoppingCartService.Tests.BusinessLogic.Validation
         }
 
         [Fact]
-        public void IsValid_ShouldReturnFalseIfCityIsEmpty()
+        public void IsValid_WhenCityIsEmpty_ReturnsFalse()
         {
             var address = new Address
             {
@@ -43,7 +43,7 @@ namespace ShoppingCartService.Tests.BusinessLogic.Validation
         }
 
         [Fact]
-        public void IsValid_ShouldReturnFalseIfCountryIsEmpty()
+        public void IsValid_WhenCountryIsEmpty_ReturnsFalse()
         {
             var address = new Address
             {
@@ -57,7 +57,7 @@ namespace ShoppingCartService.Tests.BusinessLogic.Validation
         }
 
         [Fact]
-        public void IsValid_ShouldReturnFalseIfStreetIsEmpty()
+        public void IsValid_WhenStreetIsEmpty_ReturnsFalse()
         {
             var address = new Address
             {
@@ -71,7 +71,7 @@ namespace ShoppingCartService.Tests.BusinessLogic.Validation
         }
 
         [Fact]
-        public void IsValid_ShouldReturnFalseIfAdressIsNull()
+        public void IsValid_WhenAdressIsNull_ReturnsFalse()
         {
             Address address = null;
 
