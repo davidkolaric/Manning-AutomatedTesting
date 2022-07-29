@@ -36,6 +36,14 @@ namespace ShoppingCartService.Tests.BusinessLogic
         [InlineData(CustomerType.Premium, ShippingMethod.Express, "Slovenia", "Ptuj", 1, 37.5)]
         [InlineData(CustomerType.Premium, ShippingMethod.Priority, "Slovenia", "Ptuj", 1, 15)]
         [InlineData(CustomerType.Premium, ShippingMethod.Standard, "Slovenia", "Ptuj", 1, 15)]
+        [InlineData(CustomerType.Standard, ShippingMethod.Expedited, "Slovenia", "Ptuj", 3, 54)]
+        [InlineData(CustomerType.Standard, ShippingMethod.Express, "Slovenia", "Ptuj", 3, 112.5)]
+        [InlineData(CustomerType.Standard, ShippingMethod.Priority, "Slovenia", "Ptuj", 3, 90)]
+        [InlineData(CustomerType.Standard, ShippingMethod.Standard, "Slovenia", "Ptuj", 3, 45)]
+        [InlineData(CustomerType.Premium, ShippingMethod.Expedited, "Slovenia", "Ptuj", 3, 45)]
+        [InlineData(CustomerType.Premium, ShippingMethod.Express, "Slovenia", "Ptuj", 3, 112.5)]
+        [InlineData(CustomerType.Premium, ShippingMethod.Priority, "Slovenia", "Ptuj", 3, 45)]
+        [InlineData(CustomerType.Premium, ShippingMethod.Standard, "Slovenia", "Ptuj", 3, 45)]
         public void CalculateShippingCost_ShouldReturnCorrectAmount(CustomerType customerType, ShippingMethod shippingMethod, string country, string city, uint itemsCount, double amount)
         {
             var cart = new Cart
